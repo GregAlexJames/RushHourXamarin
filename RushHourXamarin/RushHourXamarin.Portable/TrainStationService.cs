@@ -26,12 +26,9 @@ namespace RushHourXamarin.Portable
             using (var client = new HttpClient())
             {
                 var response = await client.GetStringAsync("http://api.perthtransit.com/1/train_stations/" + stationId);
-
-
+				var getTrainStationDetailsResponse = JsonConvert.DeserializeObject<GetTrainStationResponse>(response);
+				return getTrainStationDetailsResponse.response.times;
             }
-
-
-            return null;
         } 
 
         private static double GetDistanceFromLatLonInKm(double lat1, double lon1, double lat2, double lon2)

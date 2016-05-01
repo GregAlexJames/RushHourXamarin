@@ -16,6 +16,20 @@ namespace RushHourXamarin.Portable
 
     public class Train
     {
-        
+		public int? cars{get;set;}
+		public string line{get;set;}
+		public string time{ get; set; }
     }
+
+	public class GetTrainStationResponse
+	{
+		public TrainStationFull response{ get; set; }
+	}
+
+	public class TrainStationFull
+	{
+		public IEnumerable<Train> times{ get; set; }
+	}
+
+
 }
