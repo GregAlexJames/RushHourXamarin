@@ -27,6 +27,23 @@ namespace RushHourXamarin.Portable
             {
                 var response = await client.GetStringAsync("http://api.perthtransit.com/1/train_stations/" + stationId);
 				var getTrainStationDetailsResponse = JsonConvert.DeserializeObject<GetTrainStationResponse>(response);
+
+				var currentTime = DateTime.Now;
+				var currentHour = currentTime.Hour;
+				var currentMinute = currentTime.Minute; 
+				foreach(var trainDetails in getTrainStationDetailsResponse.response.times)
+				{
+					var trainTimeSplit = trainDetails.Time.Split(':');
+					var trainHour = int.Parse(trainTimeSplit[0]);
+					var trainMinute = int.Parse(trainTimeSplit[1]);
+
+					if(trainHour < currentHour)
+					{
+						trainHour = trainHour + 24;
+					}
+					trainDetails.MinutesToTrain = (trainHour - currentHour) * 60 + (trainMinute - currentMinute); 
+				}
+						
 				return getTrainStationDetailsResponse.response.times;
             }
         } 

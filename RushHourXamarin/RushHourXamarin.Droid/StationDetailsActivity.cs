@@ -24,13 +24,24 @@ namespace RushHourXamarin.Droid
             _trainStations = TrainStationService.TrainStations.ToArray();
         }
 
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             _id = Intent.GetStringExtra("id");
             _station = _trainStations.Single(p => p.identifier == _id);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.All);
+
+			try
+			{
+				var trains = await TrainStationService.GetTrainsForStation(_id);
+
+				var listView = FindViewById<ListView>(Resource.Id.List);
+				listView.Adapter = new TrainsAdapter(this, trains);
+			}
+			catch(Exception ex) {
+
+			}
         }
     }
 }

@@ -18,14 +18,13 @@ namespace RushHourXamarin.iOS
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
 
-            // If you have defined a root view controller, set it here:
-            // Window.RootViewController = myViewController;
-
-            // make the window visible
-            Window.MakeKeyAndVisible();
+            // Code to start the Xamarin Test Cloud Agent
+#if ENABLE_TEST_CLOUD
+			Xamarin.Calabash.Start();
+#endif
 
             return true;
         }
