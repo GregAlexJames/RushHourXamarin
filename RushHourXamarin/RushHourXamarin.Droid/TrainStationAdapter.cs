@@ -35,7 +35,7 @@ namespace RushHourXamarin.Droid
             var station = _trainStations[position];
 
             view.FindViewById<TextView>(Resource.Id.Name).Text = station.Name;
-            view.FindViewById<TextView>(Resource.Id.Distance).Text = station.Distance + "km";
+            view.FindViewById<TextView>(Resource.Id.Distance).Text = station.Distance + " km";
 
             return view;
         }

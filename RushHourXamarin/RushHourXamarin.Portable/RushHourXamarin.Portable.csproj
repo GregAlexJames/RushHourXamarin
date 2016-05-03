@@ -38,7 +38,10 @@
     <EmbeddedResource Include="trainStationList.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetTrainStationResponse.cs" />
+    <Compile Include="Train.cs" />
     <Compile Include="TrainStation.cs" />
+    <Compile Include="TrainStationFull.cs" />
     <Compile Include="TrainStationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -31,12 +31,12 @@ namespace RushHourXamarin.Droid
 		{
 			var view = convertView; // re-use an existing view, if one is available
 			if (view == null) // otherwise create a new one
-				view = context.LayoutInflater.Inflate(Resource.Layout.StationItem, null);
+				view = context.LayoutInflater.Inflate(Resource.Layout.TrainItem, null);
 
 			var train = _trains[position];
 
 			view.FindViewById<TextView>(Resource.Id.Destination).Text = train.Line;
-			view.FindViewById<TextView>(Resource.Id.TimeToSchedule).Text = train.Time + "mins";
+			view.FindViewById<TextView>(Resource.Id.TimeToSchedule).Text = train.Time + " mins";
 
 			return view;
 		}

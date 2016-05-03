@@ -37,7 +37,7 @@ namespace RushHourXamarin.Droid
 				var trains = await TrainStationService.GetTrainsForStation(_id);
 
 				var listView = FindViewById<ListView>(Resource.Id.List);
-				listView.Adapter = new TrainsAdapter(this, trains);
+				listView.Adapter = new TrainsAdapter(this, trains.ToArray());
 			}
 			catch(Exception ex) {
 
